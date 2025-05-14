@@ -1,317 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>McKay Shields | Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root {
-      --blue: #007acc;
-      --dark-blue: #003355;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McKay Shields | Portfolio</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      .page-wrapper {
+        position: relative;
+        display: flex;
+      }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      color: var(--dark-blue);
-      background-color: white;
-    }
-    
-    nav {
-      background-color: var(--blue);
-      color: white;
-      padding: 15px 0;
-      border-bottom: 4px solid var(--dark-blue);
-    }
+      .page-wrapper::before,
+      .page-wrapper::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        width: 100px; /* Shrunk from 300px */
+        height: 100%;
+        background-image: url("hex-pattern.png"); /* Update this if needed */
+        background-repeat: repeat;
+        z-index: -1;
+      }
 
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
+      .page-wrapper::before {
+        left: 0;
+      }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-    }
+      .page-wrapper::after {
+        right: 0;
+      }
 
-    .profile-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      margin-right: 12px;
-      object-fit: cover;
-      border: 2px solid white;
-    }
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #000000cc;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        z-index: 10;
+      }
 
-    h1 {
-      font-size: 1.5rem;
-      margin-right: 20px;
-      color: white;
-    }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
 
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 16px;
-    }
+      nav a:hover {
+        color: #00ffff;
+      }
 
-    ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: opacity 0.3s;
-    }
+      .main-content {
+        margin: 0 auto;
+        padding: 80px 20px 40px;
+        max-width: 900px;
+      }
 
-    ul li a:hover {
-      opacity: 0.7;
-    }
+      .hero {
+        text-align: center;
+        padding: 50px 20px;
+      }
 
-    .social-icons a {
-      color: white;
-      font-size: 1.2rem;
-      margin-left: 12px;
-      transition: color 0.3s;
-    }
+      .hero h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+      }
 
-    .social-icons a:hover {
-      color: #b3e5ff;
-    }
+      .hero p {
+        font-size: 1.2em;
+        color: #cccccc;
+      }
 
-    /* Outer wrapper for pattern sides */
-    .page-wrapper {
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
+      .profile-img {
+        width: 160px;
+        border-radius: 50%;
+        border: 3px solid #00ffff;
+        margin-top: 20px;
+      }
 
-    /* Hex pattern sides */
-    .page-wrapper::before,
-    .page-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 300px;
-      height: 100%;
-      background:
-        radial-gradient(circle farthest-side at 0% 50%, #ffffff 23.5%, rgba(255,255,255,0) 0) 21px 30px,
-        radial-gradient(circle farthest-side at 0% 50%, #007acc 24%, rgba(255,255,255,0) 0) 19px 30px,
-        linear-gradient(#ffffff 14%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 85%, #ffffff 0) 0 0,
-        linear-gradient(150deg, #ffffff 24%, #007acc 0, #007acc 26%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 74%, #007acc 0, #007acc 76%, #ffffff 0) 0 0,
-        linear-gradient(30deg, #ffffff 24%, #007acc 0, #007acc 26%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 74%, #007acc 0, #007acc 76%, #ffffff 0) 0 0,
-        linear-gradient(90deg, #007acc 2%, #ffffff 0, #ffffff 98%, #007acc 0%) 0 0 #ffffff;
-      background-size: 40px 60px;
-      z-index: -1;
-    }
+      section {
+        margin-bottom: 60px;
+      }
 
-    .page-wrapper::before {
-      left: 0;
-    }
+      h2 {
+        border-bottom: 2px solid #00ffff;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        color: #00ffff;
+      }
 
-    .page-wrapper::after {
-      right: 0;
-    }
+      footer {
+        text-align: center;
+        padding: 30px 0;
+        background-color: #111;
+        color: #ccc;
+        font-size: 0.9em;
+      }
 
-    .main-content {
-      max-width: 900px;
-      margin: 40px 20px;
-      padding: 30px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      z-index: 1;
-    }
+      a {
+        color: #00ffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    section {
-      margin-bottom: 4rem;
-      max-width: 900px;
-    }
+      <div class="main-content">
+        <section class="hero">
+          <h1>McKay Shields</h1>
+          <p>Welcome to my Portfolio</p>
+          <img
+            src="chalkphoto.PNG"
+            class="profile-img"
+            alt="McKay Shields"
+          />
+        </section>
 
-    h2 {
-      color: var(--blue);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
+        <section id="about">
+          <h2>About Me</h2>
+          <p>
+            I am a full-stack web developer with a background in Biology and
+            education. I recently earned a certificate in full-stack web
+            development from the University of Utah. I have experience in
+            creating mobile-first web applications using the MERN stack. I enjoy
+            working in collaborative environments and tackling new challenges. I
+            am excited to bring my skills to a dynamic team and help build
+            innovative solutions.
+          </p>
+        </section>
 
-    .hero {
-      background: url("your-background.jpg") center center / cover no-repeat;
-      position: relative;
-      text-align: center;
-      color: white;
-    }
+        <section id="skills">
+          <h2>Skills</h2>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React.js, Node.js, Express.js</li>
+            <li>MongoDB, MySQL</li>
+            <li>Git, GitHub, Heroku</li>
+          </ul>
+        </section>
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1;
-    }
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+              <li>
+                <a href="https://github.com/mckayshields/first-project" target="_blank">First Project</a> - Description of first project.
+              </li>
+              <li>
+                <a href="https://github.com/mckayshields/second-project" target="_blank">Second Project</a> - Description of second project.
+              </li>
+            </ul>
+            <p>
+              <a href="portfolio.html">→ View Full Portfolio</a>
+            </p>
+          </section>
+          
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 6rem 2rem;
-    }
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>Email: mckay.shields@gmail.com</p>
+          <p>GitHub: <a href="https://github.com/mckayshields" target="_blank">github.com/mckayshields</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/mckayshields" target="_blank">linkedin.com/in/mckayshields</a></p>
+        </section>
 
-    .hero img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 4px solid white;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: var(--blue);
-      margin-bottom: 1rem;
-    }
-
-    .about p,
-    .resume p,
-    .skills p,
-    .portfolio p,
-    .blog p {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-    }
-
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-
-    .skill {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 1rem 2rem;
-      text-align: center;
-      width: 150px;
-    }
-
-    .skill h4 {
-      margin-top: 0.5rem;
-    }
-
-    .portfolio .project {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .resume a {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: var(--blue);
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer {
-      background: #f0f0f0;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--gray);
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <h1>McKay Shields</h1>
-    <div>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#resume">Resume</a>
-      <a href="#blog">Blog</a>
+        <footer>
+          <p>&copy; 2025 McKay Shields. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-content">
-      <img src="your-profile.jpg" alt="Profile photo">
-      <h2>Hello, I'm McKay!</h2>
-      <p>Data Scientist • Machine Learning Explorer • Creative Technologist</p>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a data scientist with a passion for solving real-world problems through creative applications of AI, machine learning, and mathematical modeling. 
-      I love working on projects that combine technical depth with a fun, user-friendly experience — from Wordle solvers to asteroid path planning.
-    </p>
-  </section>
-
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill"><h4>Python</h4></div>
-      <div class="skill"><h4>Machine Learning</h4></div>
-      <div class="skill"><h4>Robotics</h4></div>
-      <div class="skill"><h4>Git & GitHub</h4></div>
-      <div class="skill"><h4>NLP</h4></div>
-      <div class="skill"><h4>Visualization</h4></div>
-    </div>
-  </section>
-
-  <section id="portfolio" class="portfolio">
-    <h2>Featured Projects</h2>
-    <div class="project">
-      <h4>🚀 Asteroid Path Planning</h4>
-      <p>Used reinforcement learning and orbital mechanics to simulate safe trajectories for hypothetical asteroid redirection missions.</p>
-    </div>
-    <div class="project">
-      <h4>🧠 NLP Research</h4>
-      <p>Built language models for cross-linguistic sentiment analysis and explored transformer-based optimization for low-resource datasets.</p>
-    </div>
-    <p><a href="portfolio.html">See full portfolio →</a></p>
-  </section>
-
-  <section id="resume" class="resume">
-    <h2>Resume</h2>
-    <p>
-      Here's a copy of my full resume, which includes academic background, technical skills, and professional experience.
-    </p>
-    <a href="fall2024.pdf" download>Download Resume (PDF)</a>
-  </section>
-
-  <section id="blog" class="blog">
-    <h2>Blog</h2>
-    <p>
-      I share thoughts on data science, learning journeys, and behind-the-scenes on my favorite projects. Blog launching soon!
-    </p>
-  </section>
-
-  <footer>
-    &copy; 2025 McKay Shields • Hosted on GitHub Pages
-  </footer>
-   
-</body>
+  </body>
 </html>
