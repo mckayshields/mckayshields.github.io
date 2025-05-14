@@ -1,57 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>McKay Shields</title>
   <style>
+    :root {
+      --blue: #007acc;
+      --light-blue: #e6f2fb;
+      --white: #fff;
+      --gray: #666;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
+      background: var(--light-blue);
       color: #333;
+      scroll-behavior: smooth;
     }
+
     nav {
-      background: #007acc;
+      background: var(--blue);
       color: white;
-      padding: 1rem;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
+
     nav h1 {
       margin: 0;
       font-size: 1.5rem;
     }
+
     nav a {
       color: white;
-      margin-left: 1rem;
+      margin-left: 1.2rem;
       text-decoration: none;
       font-weight: 500;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
-    .hero {
+
+    section {
       padding: 4rem 2rem;
-      text-align: center;
+      max-width: 1000px;
+      margin: auto;
     }
-    .hero h2 {
-      font-size: 2rem;
+
+    .hero {
+      background: url("your-background.jpg") center center / cover no-repeat;
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 2rem;
+    }
+
+    .hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
       margin-bottom: 1rem;
     }
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
+
+    h2 {
+      font-size: 2rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
     }
+
+    .about p,
+    .resume p,
+    .skills p,
+    .portfolio p,
+    .blog p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .skill {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem 2rem;
+      text-align: center;
+      width: 150px;
+    }
+
+    .skill h4 {
+      margin-top: 0.5rem;
+    }
+
+    .portfolio .project {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resume a {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: var(--blue);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     footer {
+      background: #f0f0f0;
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #666;
+      color: var(--gray);
     }
   </style>
 </head>
@@ -60,23 +152,72 @@
   <nav>
     <h1>McKay Shields</h1>
     <div>
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="#">Resume</a>
-      <a href="#">Blog</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#resume">Resume</a>
+      <a href="#blog">Blog</a>
     </div>
   </nav>
 
   <section class="hero">
-    <h2>Welcome!</h2>
+    <div class="hero-content">
+      <img src="your-profile.jpg" alt="Profile photo">
+      <h2>Hello, I'm McKay!</h2>
+      <p>Data Scientist • Machine Learning Explorer • Creative Technologist</p>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
     <p>
-      I'm McKay Shields — a data science and machine learning enthusiast with a background in robotics, optimization, and applied math. 
-      This site hosts my projects, resume, and technical blog. Thanks for visiting!
+      I'm a data scientist with a passion for solving real-world problems through creative applications of AI, machine learning, and mathematical modeling. 
+      I love working on projects that combine technical depth with a fun, user-friendly experience — from Wordle solvers to asteroid path planning.
+    </p>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><h4>Python</h4></div>
+      <div class="skill"><h4>Machine Learning</h4></div>
+      <div class="skill"><h4>Robotics</h4></div>
+      <div class="skill"><h4>Git & GitHub</h4></div>
+      <div class="skill"><h4>NLP</h4></div>
+      <div class="skill"><h4>Visualization</h4></div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio">
+    <h2>Featured Projects</h2>
+    <div class="project">
+      <h4>🚀 Asteroid Path Planning</h4>
+      <p>Used reinforcement learning and orbital mechanics to simulate safe trajectories for hypothetical asteroid redirection missions.</p>
+    </div>
+    <div class="project">
+      <h4>🧠 NLP Research</h4>
+      <p>Built language models for cross-linguistic sentiment analysis and explored transformer-based optimization for low-resource datasets.</p>
+    </div>
+    <p><a href="portfolio.html">See full portfolio →</a></p>
+  </section>
+
+  <section id="resume" class="resume">
+    <h2>Resume</h2>
+    <p>
+      Here's a copy of my full resume, which includes academic background, technical skills, and professional experience.
+    </p>
+    <a href="resume.pdf" download>Download Resume (PDF)</a>
+  </section>
+
+  <section id="blog" class="blog">
+    <h2>Blog</h2>
+    <p>
+      I share thoughts on data science, learning journeys, and behind-the-scenes on my favorite projects. Blog launching soon!
     </p>
   </section>
 
   <footer>
-    &copy; 2025 McKay Shields • Powered by GitHub Pages
+    &copy; 2025 McKay Shields • Designed with creativity & hosted on GitHub Pages
   </footer>
 
 </body>
