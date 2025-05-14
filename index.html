@@ -2,185 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>McKay Shields</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McKay Shields | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    :root {
-      --blue: #007acc;
-      --light-blue: #eef7fb;
-      --white: #fff;
-      --gray: #666;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Hexagon-style blue-white background */
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--light-blue);
-      color: #333;
-      display: flex;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 240px;
-      background: var(--white);
-      padding: 2rem 1rem;
-      border-right: 1px solid #ccc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .profile-img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--blue);
-      margin-bottom: 1rem;
-    }
-
-    nav h1 {
-      font-size: 1.2rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-
-    nav ul {
-      list-style: none;
       padding: 0;
-      text-align: center;
-    }
-
-    nav ul li {
-      margin: 1rem 0;
-    }
-
-    nav ul a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .social-icons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .social-icons a {
-      color: var(--blue);
-      font-size: 1.2rem;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: var(--blue);
-    }
-
-    .content {
-      margin-left: 240px;
-      padding: 3rem 2rem;
-      flex: 1;
-    }
-
-    section {
-      margin-bottom: 4rem;
-      max-width: 900px;
-    }
-
-    h2 {
-      color: var(--blue);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero {
-      background: url('your-background.jpg') center center / cover no-repeat;
-      padding: 4rem;
-      border-radius: 12px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero h2 {
-      color: white;
-      font-size: 2rem;
-    }
-
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .skill {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 1rem;
-      width: 140px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .project {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-
-    .resume a {
-      background: var(--blue);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .content {
-        margin: 0;
-        padding: 2rem 1rem;
-      }
-    }
-
-     nav {
       background:
         radial-gradient(circle farthest-side at 0% 50%, #ffffff 23.5%, rgba(255,255,255,0) 0) 21px 30px,
         radial-gradient(circle farthest-side at 0% 50%, #007acc 24%, rgba(255,255,255,0) 0) 19px 30px,
@@ -191,49 +20,63 @@
                                 rgba(255,255,255,0) 74%, #007acc 0, #007acc 76%, #ffffff 0) 0 0,
         linear-gradient(90deg,#007acc 2%, #ffffff 0, #ffffff 98%, #007acc 0%) 0 0 #ffffff;
       background-size: 40px 60px;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
       color: #003355;
+    }
+
+    /* Nav bar with centered content */
+    nav {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-bottom: 3px solid #007acc;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 4px solid #007acc;
     }
 
-    nav div {
+    .nav-left {
       display: flex;
       align-items: center;
     }
 
-    nav .profile-img {
-      width: 60px;
-      height: 60px;
+    .profile-img {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      margin-right: 15px;
+      margin-right: 12px;
       object-fit: cover;
     }
 
-    nav h1 {
+    h1 {
       font-size: 1.5rem;
-      margin-right: 20px;
+      margin: 0 20px 0 0;
     }
 
-    nav ul {
+    ul {
       list-style: none;
       display: flex;
       gap: 15px;
+      margin: 0;
+      padding: 0;
     }
 
-    nav ul li a {
-      color: #003355;
+    ul li a {
       text-decoration: none;
-      font-weight: bold;
-      padding: 8px 12px;
+      font-weight: 600;
+      color: #003355;
+      padding: 6px 10px;
       border-radius: 6px;
       transition: background 0.3s;
     }
 
-    nav ul li a:hover {
-      background-color: rgba(0, 122, 204, 0.15);
+    ul li a:hover {
+      background-color: rgba(0, 122, 204, 0.1);
     }
 
     .social-icons a {
@@ -246,84 +89,47 @@
     .social-icons a:hover {
       color: #007acc;
     }
+
+    /* Main content area centered */
+    .main-content {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.94);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
   </style>
 </head>
+
 <body>
-  
+
   <nav>
-    <div>
-      <img src="your-profile.jpg" class="profile-img" alt="McKay Shields" />
-      <h1>McKay Shields</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#blog">Blog</a></li>
-      </ul>
-    </div>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="your-profile.jpg" class="profile-img" alt="McKay Shields" />
+        <h1>McKay Shields</h1>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
+      </div>
     </div>
   </nav>
 
-  <main class="content">
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Hi, I'm McKay — a creative problem solver in AI, robotics, and data science.</h2>
-        <p>I bring math and code together to build cool, meaningful things.</p>
-      </div>
-    </section>
+  <div class="main-content">
+    <h2>Welcome!</h2>
+    <p>This is where your content goes — about you, your resume, and portfolio projects. The layout is centered, with your signature blue hex pattern hugging both sides.</p>
+    <!-- Add content sections here like About, Skills, Projects, etc. -->
+  </div>
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>With a background in applied math, robotics, and computer science, I’m passionate about using machine learning and modeling to solve real-world problems — whether that’s predicting coral bleaching, planning rocket paths, or decoding Wordle with information theory.</p>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">Python</div>
-        <div class="skill">Machine Learning</div>
-        <div class="skill">NLP</div>
-        <div class="skill">R & Tidyverse</div>
-        <div class="skill">C++</div>
-        <div class="skill">Robotics</div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <h2>Featured Projects</h2>
-      <div class="project">
-        <h3>Rocket Asteroid Path Planning</h3>
-        <p>Orbital mechanics meets reinforcement learning — simulate trajectories and avoid cosmic collisions.</p>
-      </div>
-      <div class="project">
-        <h3>Coral Reef Bleaching Prediction</h3>
-        <p>Used environmental and satellite data to predict bleaching risk using ensemble models.</p>
-      </div>
-      <div class="project">
-        <h3>Wordle Solver with Info Theory</h3>
-        <p>Applied entropy to dominate Wordle in minimal guesses. Fun meets math!</p>
-      </div>
-    </section>
-
-    <section id="resume" class="resume">
-      <h2>Resume</h2>
-      <p>Want the full story? Download my complete resume below.</p>
-      <a href="resume.pdf" download>Download Resume (PDF)</a>
-    </section>
-
-    <section id="blog">
-      <h2>Blog</h2>
-      <p>Coming soon: reflections, project deep dives, and learning journeys in AI + robotics.</p>
-    </section>
-
-    <footer>
-      &copy; 2025 McKay Shields • Hosted on GitHub Pages
-    </footer>
-  </main>
 </body>
 </html>
