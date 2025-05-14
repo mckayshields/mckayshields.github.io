@@ -1,187 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>McKay Shields | Portfolio</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #1a1a1a;
-        color: #ffffff;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>McKay Shields | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --blue: #007acc;
+      --dark-blue: #003355;
+    }
 
-      .page-wrapper {
-        position: relative;
-        display: flex;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--dark-blue);
+      background-color: white;
+    }
+
+    nav {
+      background-color: var(--blue);
+      color: white;
+      padding: 15px 0;
+      border-bottom: 4px solid var(--dark-blue);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .profile-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 12px;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      margin-left: 20px;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+
+    ul li a:hover {
+      opacity: 0.7;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+      margin-left: 12px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #b3e5ff;
+    }
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .page-wrapper::before,
+    .page-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      background:
+        radial-gradient(circle farthest-side at 0% 50%, #ffffff 23.5%, rgba(255,255,255,0) 0) 21px 30px,
+        radial-gradient(circle farthest-side at 0% 50%, #007acc 24%, rgba(255,255,255,0) 0) 19px 30px,
+        linear-gradient(#ffffff 14%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 85%, #ffffff 0) 0 0,
+        linear-gradient(150deg, #ffffff 24%, #007acc 0, #007acc 26%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 74%, #007acc 0, #007acc 76%, #ffffff 0) 0 0,
+        linear-gradient(30deg, #ffffff 24%, #007acc 0, #007acc 26%, rgba(255,255,255,0) 0, rgba(255,255,255,0) 74%, #007acc 0, #007acc 76%, #ffffff 0) 0 0,
+        linear-gradient(90deg, #007acc 2%, #ffffff 0, #ffffff 98%, #007acc 0%) 0 0 #ffffff;
+      background-size: 40px 60px;
+      z-index: -1;
+    }
+
+    .page-wrapper::before {
+      left: 0;
+    }
+
+    .page-wrapper::after {
+      right: 0;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 40px 20px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      z-index: 1;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    section h2 {
+      color: var(--blue);
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    section ul {
+      padding-left: 20px;
+    }
+
+    section ul li {
+      margin-bottom: 8px;
+    }
+
+    section a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    section a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
       .page-wrapper::before,
       .page-wrapper::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        width: 100px; /* Shrunk from 300px */
-        height: 100%;
-        background-image: url("hex-pattern.png"); /* Update this if needed */
-        background-repeat: repeat;
-        z-index: -1;
-      }
-
-      .page-wrapper::before {
-        left: 0;
-      }
-
-      .page-wrapper::after {
-        right: 0;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #000000cc;
-        display: flex;
-        justify-content: center;
-        padding: 10px 0;
-        z-index: 10;
-      }
-
-      nav a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
-        transition: color 0.3s ease;
-      }
-
-      nav a:hover {
-        color: #00ffff;
+        display: none;
       }
 
       .main-content {
-        margin: 0 auto;
-        padding: 80px 20px 40px;
-        max-width: 900px;
+        margin: 20px;
       }
 
-      .hero {
-        text-align: center;
-        padding: 50px 20px;
+      ul {
+        flex-direction: column;
+        gap: 10px;
       }
+    }
+  </style>
+</head>
 
-      .hero h1 {
-        font-size: 3em;
-        margin-bottom: 10px;
-      }
+<body>
 
-      .hero p {
-        font-size: 1.2em;
-        color: #cccccc;
-      }
-
-      .profile-img {
-        width: 160px;
-        border-radius: 50%;
-        border: 3px solid #00ffff;
-        margin-top: 20px;
-      }
-
-      section {
-        margin-bottom: 60px;
-      }
-
-      h2 {
-        border-bottom: 2px solid #00ffff;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-        color: #00ffff;
-      }
-
-      footer {
-        text-align: center;
-        padding: 30px 0;
-        background-color: #111;
-        color: #ccc;
-        font-size: 0.9em;
-      }
-
-      a {
-        color: #00ffff;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="main-content">
-        <section class="hero">
-          <h1>McKay Shields</h1>
-          <p>Welcome to my Portfolio</p>
-          <img
-            src="chalkphoto.PNG"
-            class="profile-img"
-            alt="McKay Shields"
-          />
-        </section>
-
-        <section id="about">
-          <h2>About Me</h2>
-          <p>
-            I am a full-stack web developer with a background in Biology and
-            education. I recently earned a certificate in full-stack web
-            development from the University of Utah. I have experience in
-            creating mobile-first web applications using the MERN stack. I enjoy
-            working in collaborative environments and tackling new challenges. I
-            am excited to bring my skills to a dynamic team and help build
-            innovative solutions.
-          </p>
-        </section>
-
-        <section id="skills">
-          <h2>Skills</h2>
-          <ul>
-            <li>HTML, CSS, JavaScript</li>
-            <li>React.js, Node.js, Express.js</li>
-            <li>MongoDB, MySQL</li>
-            <li>Git, GitHub, Heroku</li>
-          </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-              <li>
-                <a href="https://github.com/mckayshields/first-project" target="_blank">First Project</a> - Description of first project.
-              </li>
-              <li>
-                <a href="https://github.com/mckayshields/second-project" target="_blank">Second Project</a> - Description of second project.
-              </li>
-            </ul>
-            <p>
-              <a href="portfolio.html">→ View Full Portfolio</a>
-            </p>
-          </section>
-          
-
-        <section id="contact">
-          <h2>Contact</h2>
-          <p>Email: mckaygshields@gmail.com</p>
-          <p>GitHub: <a href="https://github.com/mckayshields" target="_blank">github.com/mckayshields</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/mckayshields" target="_blank">linkedin.com/in/mckayshields</a></p>
-        </section>
-
-        <footer>
-          <p>&copy; 2025 McKay Shields. All rights reserved.</p>
-        </footer>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <img src="your-profile.jpg" class="profile-img" alt="McKay Shields" />
+        <h1>McKay Shields</h1>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:your@email.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-  </body>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="main-content">
+      <section id="about">
+        <h2>About</h2>
+        <p>I'm McKay Shields, a software engineer passionate about building clean, efficient, and user-friendly applications.</p>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>JavaScript, TypeScript</li>
+          <li>React, Vue, Node.js</li>
+          <li>Python, Django</li>
+          <li>SQL, MongoDB</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/mckayshields/first-project" target="_blank">First Project</a> – Description of the first project.
+          </li>
+          <li>
+            <a href="https://github.com/mckayshields/second-project" target="_blank">Second Project</a> – Description of the second project.
+          </li>
+        </ul>
+        <p><a href="portfolio.html">→ View Full Portfolio</a></p>
+      </section>
+
+      <section id="resume">
+        <h2>Resume</h2>
+        <p>You can view my resume <a href="resume.pdf" target="_blank">here</a>.</p>
+      </section>
+
+      <section id="blog">
+        <h2>Blog</h2>
+        <p>Check out my thoughts on coding, tech, and more <a href="blog.html">on my blog</a>.</p>
+      </section>
+    </div>
+  </div>
+
+</body>
 </html>
