@@ -142,70 +142,57 @@
       margin-bottom: 1rem;
     }
 
-    .hero {
-      background: url('your-background.jpg') center center / cover no-repeat;
-      padding: 4rem;
-      border-radius: 12px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a data scientist with a passion for solving real-world problems through creative applications of AI, machine learning, and mathematical modeling. 
+      I love working on projects that combine technical depth with a fun, user-friendly experience — from Wordle solvers to asteroid path planning.
+    </p>
+  </section>
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-    }
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><h4>Python</h4></div>
+      <div class="skill"><h4>Machine Learning</h4></div>
+      <div class="skill"><h4>Robotics</h4></div>
+      <div class="skill"><h4>Git & GitHub</h4></div>
+      <div class="skill"><h4>NLP</h4></div>
+      <div class="skill"><h4>Visualization</h4></div>
+    </div>
+  </section>
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-    }
+  <section id="portfolio" class="portfolio">
+    <h2>Featured Projects</h2>
+    <div class="project">
+      <h4>🚀 Asteroid Path Planning</h4>
+      <p>Used reinforcement learning and orbital mechanics to simulate safe trajectories for hypothetical asteroid redirection missions.</p>
+    </div>
+    <div class="project">
+      <h4>🧠 NLP Research</h4>
+      <p>Built language models for cross-linguistic sentiment analysis and explored transformer-based optimization for low-resource datasets.</p>
+    </div>
+    <p><a href="portfolio.html">See full portfolio →</a></p>
+  </section>
 
-    .hero h2 {
-      color: white;
-      font-size: 2rem;
-    }
+  <section id="resume" class="resume">
+    <h2>Resume</h2>
+    <p>
+      Here's a copy of my full resume, which includes academic background, technical skills, and professional experience.
+    </p>
+    <a href="fall2024.pdf" download>Download Resume (PDF)</a>
+  </section>
 
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+  <section id="blog" class="blog">
+    <h2>Blog</h2>
+    <p>
+      I share thoughts on data science, learning journeys, and behind-the-scenes on my favorite projects. Blog launching soon!
+    </p>
+  </section>
 
-    .skill {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 1rem;
-      width: 140px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .project {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-
-    .resume a {
-      background: var(--blue);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
+  <footer>
+    &copy; 2025 McKay Shields • Hosted on GitHub Pages
+  </footer>
     
     @media (max-width: 768px) {
       .page-wrapper::before,
