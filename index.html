@@ -9,6 +9,7 @@
     :root {
       --blue: #007acc;
       --dark-blue: #003355;
+      --light-gray: #f9f9f9;
     }
 
     * {
@@ -51,7 +52,6 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      margin-right: 12px;
       object-fit: cover;
       border: 2px solid white;
     }
@@ -59,7 +59,6 @@
     h1 {
       font-size: 1.5rem;
       color: white;
-      margin: 0;
     }
 
     ul {
@@ -67,6 +66,7 @@
       display: flex;
       gap: 16px;
       margin-left: 20px;
+      flex-wrap: wrap;
     }
 
     ul li a {
@@ -143,12 +143,39 @@
       margin-bottom: 16px;
     }
 
-    section ul {
-      padding-left: 20px;
+    /* Stylish Skill Boxes */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
     }
 
-    section ul li {
-      margin-bottom: 8px;
+    .skill-box {
+      background-color: var(--light-gray);
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* Project Card Styles */
+    .project-card {
+      background-color: var(--light-gray);
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .project-card a {
+      font-weight: bold;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
     }
 
     section a {
@@ -183,7 +210,7 @@
   <nav>
     <div class="nav-container">
       <div class="nav-left">
-        <img src="IMG_0423.jpg" class="profile-img" alt="McKay Shields" />
+        <img src="your-profile.jpg" class="profile-img" alt="McKay Shields" />
         <h1>McKay Shields</h1>
         <ul>
           <li><a href="#about">About</a></li>
@@ -210,30 +237,35 @@
 
       <section id="skills">
         <h2>Skills</h2>
-        <ul>
-          <li>JavaScript, TypeScript</li>
-          <li>React, Vue, Node.js</li>
-          <li>Python, Django</li>
-          <li>SQL, MongoDB</li>
-        </ul>
+        <div class="skills-grid">
+          <div class="skill-box">JavaScript</div>
+          <div class="skill-box">TypeScript</div>
+          <div class="skill-box">React</div>
+          <div class="skill-box">Vue</div>
+          <div class="skill-box">Node.js</div>
+          <div class="skill-box">Python</div>
+          <div class="skill-box">Django</div>
+          <div class="skill-box">SQL</div>
+          <div class="skill-box">MongoDB</div>
+        </div>
       </section>
 
       <section id="projects">
         <h2>Projects</h2>
-        <ul>
-          <li>
-            <a href="https://github.com/mckayshields/first-project" target="_blank">First Project</a> – Description of the first project.
-          </li>
-          <li>
-            <a href="https://github.com/mckayshields/second-project" target="_blank">Second Project</a> – Description of the second project.
-          </li>
-        </ul>
+        <div class="project-card">
+          <a href="https://github.com/mckayshields/first-project" target="_blank">First Project</a>
+          <p>A web app that simplifies task management with real-time collaboration.</p>
+        </div>
+        <div class="project-card">
+          <a href="https://github.com/mckayshields/second-project" target="_blank">Second Project</a>
+          <p>An API that streamlines data processing for financial dashboards.</p>
+        </div>
         <p><a href="portfolio.html">→ View Full Portfolio</a></p>
       </section>
 
       <section id="resume">
         <h2>Resume</h2>
-        <p>You can view my resume <a href="fall2024.pdf" target="_blank">here</a>.</p>
+        <p>You can view my resume <a href="resume.pdf" target="_blank">here</a>.</p>
       </section>
 
       <section id="blog">
@@ -242,6 +274,18 @@
       </section>
     </div>
   </div>
+  
+<footer style="
+  text-align: center;
+  padding: 16px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 0.9rem;
+  border-top: 1px solid #ccc;
+">
+  &copy; 2025 McKay Shields. Hosted by GitHub Pages.
+</footer>
+
 
 </body>
 </html>
