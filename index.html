@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .project h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #007acc;
+    }
+    .tags {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .project p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .links a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #007acc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Project Portfolio</h1>
+
+  <div class="project-grid">
+
+    <div class="project">
+      <h2>K-Nearest Neighbors Classifier</h2>
+      <div class="tags">Python, NumPy, Scikit-learn</div>
+      <p>Implemented a KNN model from scratch and compared its accuracy against scikit-learn for classification tasks.</p>
+    </div>
+
+    <div class="project">
+      <h2>Extended Kalman Filter Localization</h2>
+      <div class="tags">Python, Matplotlib</div>
+      <p>Used EKF to estimate 2D robot position using sensor fusion. Simulated noisy GPS and odometry data.</p>
+    </div>
+
+    <div class="project">
+      <h2>Visualizing Complex Polynomials</h2>
+      <div class="tags">Python, SymPy, Matplotlib</div>
+      <p>Explored how complex roots behave under polynomial transformation with interactive visualizations.</p>
+    </div>
+
+    <div class="project">
+      <h2>Semantic Similarity NLP Research</h2>
+      <div class="tags">HuggingFace, PyTorch</div>
+      <p>Studied sentence embedding techniques using transformer models for clustering and semantic comparison.</p>
+    </div>
+
+    <div class="project">
+      <h2>Ukraine Immigration Modeling</h2>
+      <div class="tags">Pandas, Prophet, Plotly</div>
+      <p>Modeled refugee movement trends during the Ukraine conflict using time series and logistic regression.</p>
+    </div>
+
+    <div class="project">
+      <h2>Coral Reef Bleaching Prediction</h2>
+      <div class="tags">Scikit-learn, XGBoost</div>
+      <p>Built a machine learning classifier to predict reef bleaching events using environmental data.</p>
+    </div>
+
+    <div class="project">
+      <h2>Asteroid Path Planning</h2>
+      <div class="tags">Python, RRT*, Pathfinding</div>
+      <p>Simulated asteroid field navigation with RRT* and cost maps to plan safe rocket trajectories.</p>
+    </div>
+
+    <div class="project">
+      <h2>Wordle Solver via Information Theory</h2>
+      <div class="tags">Python, Entropy</div>
+      <p>Developed a Wordle solver that uses entropy and information gain to guess the optimal next word.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
