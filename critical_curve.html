@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Interactive Complex Map</title>
+  <title>Interactive Complex Mapping</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     .slider-container { margin-bottom: 10px; }
@@ -13,12 +16,12 @@
 </head>
 <body>
 
-  <h2>Interactive Complex Mapping</h2>
-  <p>This visualizes <strong>p(z) = z<sup>k</sup> + conjugate(g(z))</strong>, where</p>
-  <ul>
-    <li><strong>f(z) = z<sup>k</sup></strong></li>
-    <li><strong>g(z) = (ck / (k + j))·z<sup>k+j</sup> - (c / (j + 1))·z<sup>j+1</sup></strong></li>
-  </ul>
+  <h2>Interactive Complex Map of \( p(z) = z^k + \overline{g(z)} \)</h2>
+  <p>
+    Where:<br>
+    \( f(z) = z^k \)<br>
+    \( g(z) = \frac{ck}{k+j}z^{k+j} - \frac{c}{j+1}z^{j+1} \)
+  </p>
 
   <div class="slider-container">
     <label for="cSlider">c: <span id="cVal">0.6</span></label>
@@ -56,16 +59,20 @@
         const theta = 2 * Math.PI * i / N;
         const Z = math.complex({ re: crit * Math.cos(theta), im: crit * Math.sin(theta) });
 
-        const f = math.pow(Z, k);
-        const g1 = math.multiply((c * k) / (k + j), math.pow(Z, k + j));
-        const g2 = math.multiply(c / (j + 1), math.pow(Z, j + 1));
-        const g = math.subtract(g1, g2);
-        const gConj = math.conj(g);
+        try {
+          const f = math.pow(Z, k);
+          const g1 = math.multiply((c * k) / (k + j), math.pow(Z, k + j));
+          const g2 = math.multiply(c / (j + 1), math.pow(Z, j + 1));
+          const g = math.subtract(g1, g2);
+          const gConj = math.conj(g);
+          const p = math.add(f, gConj);
 
-        const p = math.add(f, gConj);
-
-        real.push(p.re);
-        imag.push(p.im);
+          real.push(p.re);
+          imag.push(p.im);
+        } catch (e) {
+          real.push(NaN);
+          imag.push(NaN);
+        }
       }
 
       return { real, imag };
@@ -101,13 +108,12 @@
       Plotly.newPlot('plot', [trace], layout, { displayModeBar: false });
     }
 
-    // Update on slider movement
-    [cSlider, kSlider, jSlider].forEach(slider => {
-      slider.addEventListener('input', updatePlot);
-    });
+    // Update on slider input
+    [cSlider, kSlider, jSlider].forEach(slider =>
+      slider.addEventListener('input', updatePlot)
+    );
 
-    // First draw
-    updatePlot();
+    window.onload = updatePlot;
   </script>
 
 </body>
