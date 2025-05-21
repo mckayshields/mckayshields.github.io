@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Interactive Complex Map</title>
-  <!-- Plotly.js -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- math.js for complex arithmetic -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
@@ -15,11 +13,16 @@
 </head>
 <body>
 
-  <h2>Interactive Complex Map of \( p(z) = z^k + \overline{g(z)}\)</h2>
+  <h2>Interactive Complex Mapping</h2>
+  <p>This visualizes <strong>p(z) = z<sup>k</sup> + conjugate(g(z))</strong>, where</p>
+  <ul>
+    <li><strong>f(z) = z<sup>k</sup></strong></li>
+    <li><strong>g(z) = (ck / (k + j))·z<sup>k+j</sup> - (c / (j + 1))·z<sup>j+1</sup></strong></li>
+  </ul>
 
   <div class="slider-container">
     <label for="cSlider">c: <span id="cVal">0.6</span></label>
-    <input id="cSlider" type="range" min="0.1" max="10" step="0.1" value="0.6">
+    <input id="cSlider" type="range" min="0.1" max="5" step="0.1" value="0.6">
   </div>
 
   <div class="slider-container">
@@ -32,10 +35,9 @@
     <input id="jSlider" type="range" min="1" max="10" step="1" value="1">
   </div>
 
-  <div id="plot" style="width:600px; height:600px;"></div>
+  <div id="plot" style="width:700px; height:600px;"></div>
 
   <script>
-    // grab elements
     const cSlider = document.getElementById('cSlider');
     const kSlider = document.getElementById('kSlider');
     const jSlider = document.getElementById('jSlider');
@@ -43,19 +45,70 @@
     const kVal = document.getElementById('kVal');
     const jVal = document.getElementById('jVal');
 
-    // function definitions
     function computeP(c, k, j) {
       const N = 500;
-      const points = [];
-      const crit = Math.pow(c, -1/j);
+      const real = [];
+      const imag = [];
+
+      const crit = Math.pow(c, -1 / j);
 
       for (let i = 0; i < N; i++) {
         const theta = 2 * Math.PI * i / N;
-        // Z = crit * e^{i theta}
-        const Z = math.complex({
-          re: crit * Math.cos(theta),
-          im: crit * Math.sin(theta)
-        });
-        // f = Z^k
+        const Z = math.complex({ re: crit * Math.cos(theta), im: crit * Math.sin(theta) });
+
         const f = math.pow(Z, k);
-        // g =
+        const g1 = math.multiply((c * k) / (k + j), math.pow(Z, k + j));
+        const g2 = math.multiply(c / (j + 1), math.pow(Z, j + 1));
+        const g = math.subtract(g1, g2);
+        const gConj = math.conj(g);
+
+        const p = math.add(f, gConj);
+
+        real.push(p.re);
+        imag.push(p.im);
+      }
+
+      return { real, imag };
+    }
+
+    function updatePlot() {
+      const c = parseFloat(cSlider.value);
+      const k = parseInt(kSlider.value);
+      const j = parseInt(jSlider.value);
+      cVal.textContent = c.toFixed(1);
+      kVal.textContent = k;
+      jVal.textContent = j;
+
+      const data = computeP(c, k, j);
+
+      const trace = {
+        x: data.real,
+        y: data.imag,
+        mode: 'lines',
+        line: { width: 2 },
+        name: 'p(z)'
+      };
+
+      const layout = {
+        title: `Plot of p(z) for c=${c}, k=${k}, j=${j}`,
+        xaxis: { title: 'Real', range: [-3, 3] },
+        yaxis: { title: 'Imaginary', range: [-3, 3] },
+        width: 700,
+        height: 600,
+        showlegend: false
+      };
+
+      Plotly.newPlot('plot', [trace], layout, { displayModeBar: false });
+    }
+
+    // Update on slider movement
+    [cSlider, kSlider, jSlider].forEach(slider => {
+      slider.addEventListener('input', updatePlot);
+    });
+
+    // First draw
+    updatePlot();
+  </script>
+
+</body>
+</html>
