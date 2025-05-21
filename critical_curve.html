@@ -16,10 +16,10 @@
 </head>
 <body>
 
-  <h2>Interactive Complex Map of \( p(z) = z^k + \overline{g(z)} \)</h2>
+  <h2>Interactive Complex Map of \( p(z) = f(z) + \overline{g(z)} \)</h2>
   <p>
     Where:<br>
-    \( f(z) = z^k \)<br>
+    \( f(z) = z^k - z\)<br>
     \( g(z) = \frac{ck}{k+j}z^{k+j} - \frac{c}{j+1}z^{j+1} \)
   </p>
 
@@ -60,7 +60,8 @@
         const Z = math.complex({ re: crit * Math.cos(theta), im: crit * Math.sin(theta) });
 
         try {
-          const f = math.pow(Z, k);
+          const f1 = math.pow(Z, k);
+          const f = math.subtract(f1, Z);
           const g1 = math.multiply((c * k) / (k + j), math.pow(Z, k + j));
           const g2 = math.multiply(c / (j + 1), math.pow(Z, j + 1));
           const g = math.subtract(g1, g2);
