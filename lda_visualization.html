@@ -1,26 +1,71 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bmabey/pyLDAvis@3.4.0/pyLDAvis/js/ldavis.v1.0.0.css">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LDA in Underwater Biology</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+      color: #333;
+    }
 
-<h1>Latent Dirichlet Allocation for Domain-Specific Language Modeling in Underwater Biology</h1>
+    .content-box {
+      background-color: #f0f0f0;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
 
-<p>
-In this study, I constructed and preprocessed a specialized text corpus to support the development of domain-specific word embeddings for underwater biology, with a focus on coral reef ecosystems.
-Wikipedia articles pertaining to key reef-building coral taxa—<em>Acropora</em>, <em>Black Coral</em>, <em>Montipora</em>, <em>Pocillopora</em>, <em>Porites</em>, and <em>Scleractinia</em>—were selected to ensure topical relevance and scientific depth.
-The goal of this corpus construction is to enhance the semantic precision of large language models in marine and ecological contexts.
-</p>
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.6em;
+      color: #2c3e50;
+    }
 
-<p>
-Raw textual data were tokenized using a regular expression-based tokenizer to extract alphanumeric word units.
-Standard English stopwords were removed to reduce lexical noise and focus on semantically meaningful content.
-Tokens were filtered to include only alphabetic characters, and each cleaned article was stored as a processed text unit for downstream analysis.
-Throughout the preprocessing pipeline, I computed key corpus statistics, including the number of articles, paragraph counts, total token counts, and the vocabulary size (i.e., number of unique tokens).
-</p>
+    p {
+      line-height: 1.7;
+      margin-bottom: 1.2em;
+    }
 
-<p>
-The cleaned and tokenized corpus will serve as input for subsequent vectorization and topic modeling procedures, such as TF-IDF transformation and Latent Dirichlet Allocation (LDA), to uncover latent semantic structures within the data.
-These representations aim to support the training of fine-tuned language models for marine biology, ultimately contributing to improved performance in domain-specific information retrieval, question answering, and knowledge discovery applications.
-</p>
+    em {
+      font-style: italic;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-box">
+    <h1>Latent Dirichlet Allocation for Domain-Specific Language Modeling in Underwater Biology</h1>
+
+    <p>
+      In this study, I constructed and preprocessed a specialized text corpus to support the development of domain-specific word embeddings for underwater biology, with a focus on coral reef ecosystems.
+      Wikipedia articles pertaining to key reef-building coral taxa—<em>Acropora</em>, <em>Black Coral</em>, <em>Montipora</em>, <em>Pocillopora</em>, <em>Porites</em>, and <em>Scleractinia</em>—were selected to ensure topical relevance and scientific depth.
+      The goal of this corpus construction is to enhance the semantic precision of large language models in marine and ecological contexts.
+    </p>
+
+    <p>
+      Raw textual data were tokenized using a regular expression-based tokenizer to extract alphanumeric word units.
+      Standard English stopwords were removed to reduce lexical noise and focus on semantically meaningful content.
+      Tokens were filtered to include only alphabetic characters, and each cleaned article was stored as a processed text unit for downstream analysis.
+      Throughout the preprocessing pipeline, I computed key corpus statistics, including the number of articles, paragraph counts, total token counts, and the vocabulary size (i.e., number of unique tokens).
+    </p>
+
+    <p>
+      The cleaned and tokenized corpus will serve as input for subsequent vectorization and topic modeling procedures, such as TF-IDF transformation and Latent Dirichlet Allocation (LDA), to uncover latent semantic structures within the data.
+      These representations aim to support the training of fine-tuned language models for marine biology, ultimately contributing to improved performance in domain-specific information retrieval, question answering, and knowledge discovery applications.
+    </p>
+  </div>
+
+</body>
+</html>
 
 <div id="ldavis_el2493624728056560487032763458" style="background-color:white;"></div>
 
