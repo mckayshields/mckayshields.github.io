@@ -93,7 +93,7 @@
       guessDisplay.textContent = `Suggested Next Guess: ${data.next_guess.toUpperCase()}`;
     });
 
-    document.getElementById('reset-btn').addEventListener('click', () => {
+    document.getElementById('reset-btn').addEventListener('click', async () => {
       feedbackRow.forEach(tile => {
         tile.value = '';
         tile.dataset.color = 'gray';
@@ -101,6 +101,10 @@
         tile.classList.add('bg-wordle-gray');
       });
       guessDisplay.textContent = '';
+
+      await fetch('https://wordle-solver.onrender.com/reset', {
+        method: 'POST'
+      });
     });
   </script>
 </body>
