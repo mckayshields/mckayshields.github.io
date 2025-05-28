@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wordle Entropy Solver</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans flex flex-col items-center justify-center min-h-screen p-4">
+  <h1 class="text-4xl font-bold mb-8 text-gray-800">Wordle Solver</h1>
+
+  <div class="space-y-4">
+    <div class="flex space-x-2" id="feedback-row">
+      <!-- Feedback tiles -->
+      <input maxlength="1" class="tile" data-index="0" />
+      <input maxlength="1" class="tile" data-index="1" />
+      <input maxlength="1" class="tile" data-index="2" />
+      <input maxlength="1" class="tile" data-index="3" />
+      <input maxlength="1" class="tile" data-index="4" />
+    </div>
+
+    <div class="flex space-x-2 justify-center">
+      <button id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-xl shadow">
+        Get Next Guess
+      </button>
+      <button id="reset-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-xl">
+        Reset
+      </button>
+    </div>
+
+    <div id="guess-display" class="text-xl text-center text-green-700 mt-4 font-semibold"></div>
+  </div>
+
+  <script>
+    const feedbackRow = document.querySelectorAll('.tile');
+    const guessDisplay = document.getElementById('guess-display');
+    let previousGuess = '';
+
+    feedbackRow.forEach((tile, idx) => {
+      tile.classList.add(
+        'text-center', 'w-16', 'h-16', 'text-2xl', 'rounded-lg', 'shadow-md',
+        'bg-white', 'border-2', 'border-gray-300', 'focus:outline-none',
+        'uppercase'
+      );
+
+      tile.addEventListener('keydown', e => {
+        if (e.key === 'Backspace' && tile.value === '' && idx > 0) {
+          feedbackRow[idx - 1].focus();
+        }
+      });
+
+      tile.addEventListener('input', () => {
+        tile.value = tile.value.toUpperCase();
+        if (tile.value && idx < 4) {
+          feedbackRow[idx + 1].focus();
+        }
+      });
+
+      tile.addEventListener('click', () => {
+        const colors = ['gray', 'yellow', 'green'];
+        let current = tile.dataset.color || 'gray';
+        let next = colors[(colors.indexOf(current) + 1) % colors.length];
+        tile.dataset.color = next;
+        tile.classList.remove('bg-gray-300', 'bg-yellow-300', 'bg-green-400');
+        tile.classList.add(`bg-${next === 'gray' ? 'gray-300' : next === 'yellow' ? 'yellow-300' : 'green-400'}`);
+      });
+    });
+
+    document.getElementById('submit-btn').addEventListener('click', async () => {
+      const guess = Array.from(feedbackRow).map(el => el.value).join('').toLowerCase();
+      const result = Array.from(feedbackRow).map(el => {
+        const c = el.dataset.color;
+        return c === 'green' ? 2 : c === 'yellow' ? 1 : 0;
+      });
+
+      const res = await fetch('/next-guess', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ guess, result })
+      });
+
+      const data = await res.json();
+      previousGuess = data.next_guess;
+      guessDisplay.textContent = `Suggested Next Guess: ${data.next_guess.toUpperCase()}`;
+    });
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      feedbackRow.forEach(tile => {
+        tile.value = '';
+        tile.dataset.color = 'gray';
+        tile.classList.remove('bg-yellow-300', 'bg-green-400');
+        tile.classList.add('bg-gray-300');
+      });
+      guessDisplay.textContent = '';
+    });
+  </script>
+</body>
+</html>
