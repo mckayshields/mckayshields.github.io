@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wordle Entropy Solver</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .bg-wordle-gray { background-color: #787c7f; }
+    .bg-wordle-yellow { background-color: #c8b653; }
+    .bg-wordle-green { background-color: #6ca965; }
+  </style>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col items-center justify-center min-h-screen p-4">
   <h1 class="text-4xl font-bold mb-8 text-gray-800">Wordle Solver</h1>
@@ -61,8 +66,12 @@
         let current = tile.dataset.color || 'gray';
         let next = colors[(colors.indexOf(current) + 1) % colors.length];
         tile.dataset.color = next;
-        tile.classList.remove('bg-gray-300', 'bg-yellow-300', 'bg-green-400');
-        tile.classList.add(`bg-${next === 'gray' ? 'gray-300' : next === 'yellow' ? 'yellow-300' : 'green-400'}`);
+        tile.classList.remove('bg-wordle-yellow', 'bg-wordle-green', 'bg-wordle-gray');
+        tile.classList.add(
+          next === 'gray' ? 'bg-wordle-gray' :
+          next === 'yellow' ? 'bg-wordle-yellow' :
+          'bg-wordle-green'
+        );
       });
     });
 
@@ -88,8 +97,8 @@
       feedbackRow.forEach(tile => {
         tile.value = '';
         tile.dataset.color = 'gray';
-        tile.classList.remove('bg-yellow-300', 'bg-green-400');
-        tile.classList.add('bg-gray-300');
+        tile.classList.remove('bg-wordle-yellow', 'bg-wordle-green');
+        tile.classList.add('bg-wordle-gray');
       });
       guessDisplay.textContent = '';
     });
