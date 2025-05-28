@@ -82,7 +82,7 @@
         return c === 'green' ? 2 : c === 'yellow' ? 1 : 0;
       });
 
-      const res = await fetch('/next-guess', {
+      const res = await fetch('https://wordle-solver.onrender.com/next-guess', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ guess, result })
